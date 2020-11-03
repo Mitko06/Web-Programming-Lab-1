@@ -2,7 +2,6 @@ package mk.finki.ukim.mk.lab.web;
 
 import mk.finki.ukim.mk.lab.model.Balloon;
 import mk.finki.ukim.mk.lab.service.implementation.BalloonService;
-import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 import org.thymeleaf.spring5.SpringTemplateEngine;
 
@@ -30,8 +29,6 @@ public class balloonListServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<Balloon> list = balloonService.listAll();
 
-
-
         PrintWriter out = resp.getWriter();
         out.write("<html>");
         out.write("<head>");
@@ -53,6 +50,8 @@ public class balloonListServlet extends HttpServlet {
         out.write("</body>");
         out.write("</html>");
 
+        req.getSession().invalidate();
+
         WebContext context = new WebContext(req,resp,req.getServletContext());
 
         context.setVariable("ipAddress",req.getRemoteAddr());
@@ -62,6 +61,11 @@ public class balloonListServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String choosenBalloon = req.getParameter("color");
+
+        req.getSession().setAttribute("balloon-color",choosenBalloon);
+        System.out.println(req.getSession().getAttribute("balloon-color"));
+        resp.sendRedirect("/selectBalloon");
 
     }
 }

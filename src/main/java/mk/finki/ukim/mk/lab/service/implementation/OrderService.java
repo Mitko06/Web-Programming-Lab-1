@@ -5,9 +5,9 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class OrderService implements mk.finki.ukim.mk.lab.service.OrderService {
-    public Order makeOrder;
+
     @Override
-    public Order placeOrder(String balloonColor, String clientName, String address) {
-        return new Order(balloonColor,"100",clientName,address,(long)111111111);
+    public Order placeOrder(String balloonColor, String balloonSize, String clientName, String address) {
+        return new Order(balloonColor,balloonSize,clientName,address,(long)1);
     }
 }

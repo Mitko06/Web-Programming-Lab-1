@@ -1,4 +1,4 @@
-<html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
     <title>Balloon Order page - Welcome and choose a Balloon</title>
@@ -15,13 +15,10 @@
 </header>
 <main>
     <h2>Choose balloon color:</h2>
-    <input type="radio" name="color" value="Red Balloon"> Red Balloon<br/>
-    <input type="radio" name="color" value="Green Balloon"> Green Balloon<br/>
-    <input type="radio" name="color" value="Yellow Balloon"> Yellow Balloon<br/>
-    <input type="radio" name="color" value="Blue Balloon"> Blue Balloon<br/>
-
-    <br/>
-    <a href="/selectBalloonSize.html">Submit</a>
+    <form th:method="POST" th:action="@{/}">
+        <th:block th:each="balloon : ${balloons}"><input type="radio" name="color" th:value="${balloon.name}"><th:block th:text="${balloon.name}+' '+Balloon"></th:block><br/></th:block>
+        <input type="submit" value="Submit"/>
+    </form>
 </main>
 </body>
 </html>

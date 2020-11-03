@@ -1,6 +1,7 @@
 package mk.finki.ukim.mk.lab.bootstrap;
 
 import mk.finki.ukim.mk.lab.model.Balloon;
+import mk.finki.ukim.mk.lab.model.Order;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -10,7 +11,6 @@ import java.util.List;
 @Component
 public class DataHolder {
     public static List<Balloon> listBalloons = new ArrayList<>();
-
     @PostConstruct
     public void init(){
         listBalloons.add(new Balloon("Red","This is Red balloon"));

@@ -17,5 +17,8 @@ public class Order {
         this.clientAddress = clientAddress;
         this.orderId = orderId;
     }
+    public Order(){
+
+    }
 }
 

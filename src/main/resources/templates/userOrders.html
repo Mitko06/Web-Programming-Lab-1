@@ -14,38 +14,26 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h3>All Balloons</h3>
-            <h2>Choose balloon color:</h2>
-            <form th:method="POST" th:action="@{/servlet/}">
-                <th:block th:each="balloon : ${balloons}"><input type="radio" name="color" th:value="${balloon.name}"><th:block th:text="${balloon.getName()}+' '+Balloon+' '"></th:block><th:block th:text="${balloon.getDescription()}+' '"></th:block><th:block th:text="${balloon.getManufacturer().getName()}"></th:block><br/></th:block>
-                <input type="submit" value="Submit"/>
-            </form>
+            <h3>List Orders</h3>
 
             <table class="table table-striped">
                 <thead>
                 <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Manufacturer Name</th>
-                    <th scope="col">Action</th>
+                    <th scope="col">Order ID</th>
+                    <th scope="col">Balloon Color</th>
+                    <th scope="col">Balloon Size</th>
+                    <th scope="col">Client Name</th>
+                    <th scope="col">Client Address</th>
                 </tr>
                 </thead>
                 <tbody>
 
-                <tr th:each="balloon : ${balloons}">
-                    <td th:text="${balloon.getId()}"></td>
-                    <td th:text="${balloon.getName()}"></td>
-                    <td th:text="${balloon.getDescription()}"></td>
-                    <td th:text="${balloon.getManufacturer().getName()}"></td>
-                    <td style="display: inline-flex;">
-                        <form style="margin-right: 10px" th:method="POST" th:action="@{'/balloons/delete/{id}' (id=${balloon.getId()})}">
-                            <input type="submit" value="Delete" class="btn btn-sm btn-danger"/>
-                        </form>
-                        <a class="btn btn-sm btn-success" th:href="@{'/balloons/edit/{id}' (id=${balloon.getId()})}">
-                            Edit
-                        </a>
-                    </td>
+                <tr th:each="order : ${orders}">
+                    <td th:text="${order.getOrderId()}"></td>
+                    <td th:text="${order.getBalloonColor()}"></td>
+                    <td th:text="${order.getBalloonSize()}"></td>
+                    <td th:text="${order.getClientName()}"></td>
+                    <td th:text="${order.getClientAddress()}"></td>
                 </tr>
                 </tbody>
             </table>

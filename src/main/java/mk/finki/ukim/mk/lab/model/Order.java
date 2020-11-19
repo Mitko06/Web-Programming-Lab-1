@@ -10,15 +10,12 @@ public class Order {
     public String clientAddress;
     public Long orderId;
 
-    public Order(String balloonColor, String balloonSize, String clientName, String clientAddress, Long orderId) {
+    public Order(String balloonColor, String balloonSize, String clientName, String clientAddress) {
         this.balloonColor = balloonColor;
         this.balloonSize = balloonSize;
         this.clientName = clientName;
         this.clientAddress = clientAddress;
-        this.orderId = orderId;
-    }
-    public Order(){
-
+        this.orderId = (long) (Math.random()*1000);
     }
 }
 

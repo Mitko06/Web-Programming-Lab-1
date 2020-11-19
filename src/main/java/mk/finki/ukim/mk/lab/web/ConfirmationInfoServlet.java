@@ -41,6 +41,7 @@ public class ConfirmationInfoServlet extends HttpServlet {
 
         context.setVariable("order",order);
 
+
         springTemplateEngine.process("confirmatIonInfo.html",context,resp.getWriter());
     }
 
